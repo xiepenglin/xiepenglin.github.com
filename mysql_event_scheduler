@@ -1,0 +1,34 @@
+
+show variables like '%scheduler%';
+
+-- 打开事件调度器，事件调度器默认是关闭的
+SET GLOBAL event_scheduler = 1;
+
+-- 循环执行任务
+create event Event_Log_Merge_Month
+on schedule
+every 1 month
+DO
+call usp_Log_Merge_Month('actionlog');
+call usp_Log_Merge_Month('eventlog');
+
+
+-- 一次性执行
+create event Event_Log_Merge_Month
+on schedule at CURRENT_TIMESTAMP() + INTERVAL 1 MONTH
+DO
+call usp_Log_Merge_Month('actionlog');
+call usp_Log_Merge_Month('eventlog');
+
+-- 查看所有事件（任务）
+show events;
+
+-- 删除任务
+drop event Event_Log_Merge_Month;
+
+
+
+	1. 开启某事件：ALTER EVENT e_del_logs ON COMPLETION PRESERVE ENABLE;  
+	2. 关闭某事件：ALTER EVENT e_del_logs ON COMPLETION PRESERVE DISABLE;  
+
+
