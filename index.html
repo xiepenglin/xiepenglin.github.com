@@ -1,1 +1,88 @@
-xiepenglin的github首页
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on https://github.com/jonrohan -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen">
+  <link rel="stylesheet" href="stylesheets/github-dark.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/script.js"></script>
+
+  <title>Xiepenglin.GitHub.com</title>
+  <meta name="description" content="">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <header>
+      <h1 class="title">Xiepenglin.GitHub.com</h1>
+    </header>
+    <div id="container">
+      <p class="tagline"></p>
+      <div id="main" role="main">
+        <div class="download-bar">
+        <div class="inner">
+          <a href="https://github.com/xiepenglin" class="code">View Xiepenglin.GitHub.com on GitHub</a>
+        </div>
+        <span class="blc"></span><span class="trc"></span>
+        </div>
+        <article class="markdown-body">
+          <p>show variables like '%scheduler%';</p>
+
+<p>-- 打开事件调度器，事件调度器默认是关闭的
+SET GLOBAL event_scheduler = 1;</p>
+
+<p>-- 循环执行任务
+create event Event_Log_Merge_Month
+on schedule
+every 1 month
+DO
+call usp_Log_Merge_Month('actionlog');
+call usp_Log_Merge_Month('eventlog');</p>
+
+<p>-- 一次性执行
+create event Event_Log_Merge_Month
+on schedule at CURRENT_TIMESTAMP() + INTERVAL 1 MONTH
+DO
+call usp_Log_Merge_Month('actionlog');
+call usp_Log_Merge_Month('eventlog');</p>
+
+<p>-- 查看所有事件（任务）
+show events;</p>
+
+<p>-- 删除任务
+drop event Event_Log_Merge_Month;</p>
+
+<pre><code>1. 开启某事件：ALTER EVENT e_del_logs ON COMPLETION PRESERVE ENABLE;  
+2. 关闭某事件：ALTER EVENT e_del_logs ON COMPLETION PRESERVE DISABLE;  
+</code></pre>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="owner">
+
+      <p><a href="https://github.com/xiepenglin" class="avatar"><img src="https://avatars2.githubusercontent.com/u/18132130?v=3&amp;s=60" width="48" height="48"></a>View <a href="https://github.com/xiepenglin">xiepenglin</a> on <a href="https://www.github.com">GitHub</a></p>
+
+      </div>
+      <div class="creds">
+        <small>This page generated using <a href="https://pages.github.com/">GitHub Pages</a><br>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a></small>
+      </div>
+    </footer>
+  </div>
+  <div class="current-section">
+    <a href="#top">Scroll to top</a>
+    <a href="https://github.com/xiepenglin/xiepenglin.github.com/tarball/master" class="tar">tar</a><a href="https://github.com/xiepenglin/xiepenglin.github.com/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
+    <p class="name"></p>
+  </div>
+
+  
+</body>
+</html>

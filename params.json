@@ -1,0 +1,6 @@
+{
+  "name": "Xiepenglin.GitHub.com",
+  "tagline": "",
+  "body": "\r\nshow variables like '%scheduler%';\r\n\r\n-- 打开事件调度器，事件调度器默认是关闭的\r\nSET GLOBAL event_scheduler = 1;\r\n\r\n-- 循环执行任务\r\ncreate event Event_Log_Merge_Month\r\non schedule\r\nevery 1 month\r\nDO\r\ncall usp_Log_Merge_Month('actionlog');\r\ncall usp_Log_Merge_Month('eventlog');\r\n\r\n\r\n-- 一次性执行\r\ncreate event Event_Log_Merge_Month\r\non schedule at CURRENT_TIMESTAMP() + INTERVAL 1 MONTH\r\nDO\r\ncall usp_Log_Merge_Month('actionlog');\r\ncall usp_Log_Merge_Month('eventlog');\r\n\r\n-- 查看所有事件（任务）\r\nshow events;\r\n\r\n-- 删除任务\r\ndrop event Event_Log_Merge_Month;\r\n\r\n\r\n\r\n\t1. 开启某事件：ALTER EVENT e_del_logs ON COMPLETION PRESERVE ENABLE;  \r\n\t2. 关闭某事件：ALTER EVENT e_del_logs ON COMPLETION PRESERVE DISABLE;  \r\n\r\n\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
